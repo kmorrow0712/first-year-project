@@ -1,0 +1,538 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Creating gPPI regressors &#8212; First year project</title>
+    
+  <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="First year project" href="landing-page.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">First year project</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="landing-page.html">
+   First year project
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Creating gPPI regressors
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/create-gPPI-regressors.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#relevant-details">
+   Relevant details
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dataset">
+     Dataset
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#seed-region-s">
+     Seed region(s)
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#left-crus-ii-cerebellum">
+       left Crus II (cerebellum)
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#programs-utilized">
+     Programs utilized
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#goal">
+     Goal
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#info">
+     Info
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#extract-baseline-from-first-level-subject-data">
+     1. Extract baseline from first level subject data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#subtract-baseline-from-preprocssed-functional-data">
+     2. Subtract baseline from preprocssed functional data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#extract-time-series-from-seed-region">
+     3. Extract time series from seed region
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#create-boxcar-functions-and-upsample-each-regressor">
+     4. Create boxcar functions and upsample each regressor
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#get-seed-region-data-per-run">
+     5. Get seed region data per run
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#upsample-seed-data">
+     6. Upsample seed data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-create-gamma-function">
+     7a. Create gamma function
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#b-deconvolve-seed-time-seed-timeseries-with-gamma-function">
+     7b. Deconvolve seed time seed timeseries with gamma function
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#an-aside-does-mean-centering-simple-effects-before-creating-interaction-term-impact-collinearity">
+     An aside: Does mean-centering simple effects before creating interaction term impact collinearity?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#de-mean-neuronal-timeseries">
+     8. De-mean neuronal timeseries
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#create-interaction-terms-for-each-condition">
+     9. Create interaction terms for each condition
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#convolve-newly-created-terms-with-canonical-hrf">
+     10. Convolve newly created terms with canonical HRF
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#downsample-to-original-tr-1-25s">
+     11. Downsample to original TR (1.25s)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#these-should-obviously-be-de-spiked-or-censored-in-some-way">
+     These should obviously be de-spiked or censored in some way.
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="creating-gppi-regressors">
+<h1>Creating gPPI regressors<a class="headerlink" href="#creating-gppi-regressors" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="relevant-details">
+<h2>Relevant details<a class="headerlink" href="#relevant-details" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="dataset">
+<h3>Dataset<a class="headerlink" href="#dataset" title="Permalink to this headline">¶</a></h3>
+<p>MAX (N = 5)</p>
+</div>
+<div class="section" id="seed-region-s">
+<h3>Seed region(s)<a class="headerlink" href="#seed-region-s" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="left-crus-ii-cerebellum">
+<h4>left Crus II (cerebellum)<a class="headerlink" href="#left-crus-ii-cerebellum" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">SUIT_l-CrusII_YeoNetwork6_intersect_gm_2mm.nii.gz</span></code> <br>
+<strong>transformations</strong></p>
+<ol class="simple">
+<li><p>Crus II multipled with <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3214121/">Buckner et al’s</a> cognitive control network.</p></li>
+<li><p>Intersection then multiplied with a <a class="reference external" href="http://www.diedrichsenlab.org/imaging/suit.htm">SUIT</a> gray matter mask.</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="programs-utilized">
+<h3>Programs utilized<a class="headerlink" href="#programs-utilized" title="Permalink to this headline">¶</a></h3>
+<p>AFNI</p>
+</div>
+<div class="section" id="goal">
+<h3>Goal<a class="headerlink" href="#goal" title="Permalink to this headline">¶</a></h3>
+<p>Practice generating general psychophysiological interaction (gPPI) terms to explore functional connectivity between seed regions and all other voxels of the brain and how this relationship relates to task. </br></p>
+</div>
+<div class="section" id="info">
+<h3>Info<a class="headerlink" href="#info" title="Permalink to this headline">¶</a></h3>
+<p>Scripts and data files are described below. Each step is documented with output images or examples when applicable. Very small group of subjects used with a simple analysis in mind (for now…). <br>
+<em>All scripts shown are shell script and show typical shell shortcuts e.g., <code class="docutils literal notranslate"><span class="pre">&quot;$subj&quot;</span></code></em></p>
+</div>
+<hr class="docutils" />
+<div class="section" id="extract-baseline-from-first-level-subject-data">
+<h3>1. Extract baseline from first level subject data<a class="headerlink" href="#extract-baseline-from-first-level-subject-data" title="Permalink to this headline">¶</a></h3>
+<p>First, need to extract the baseline which includes drifts, motion, and motion derivatives as output from <code class="docutils literal notranslate"><span class="pre">3dDeconvolve</span></code> using <code class="docutils literal notranslate"><span class="pre">3dSynthesize</span></code>. Baseline data is extracted from a basic first level model in the sense that it just consists of blocks, but fully accounts for the task. <br></p>
+<p><strong>Purpose:</strong> Extact variance associated with anything but the task and then subtract this baseline from functional data to have task-based variance left.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>3dSynthesize -cbucket ./MAX&quot;$subj&quot;_Main_block_MR_REML_beta_shockcensored_I.nii.gz \
+-matrix ./&quot;MAX&quot;$subj&quot;_Main_block_MR_uncensored_I.x1D&quot; \
+-select baseline -overwrite \
+-prefix &quot;$output&quot;/MAX/&quot;$subj&quot;_EP_Main_TR_MNI_2mm_I_denoised_baselineModel.nii.gz
+</pre></div>
+</div>
+</div>
+<div class="section" id="subtract-baseline-from-preprocssed-functional-data">
+<h3>2. Subtract baseline from preprocssed functional data<a class="headerlink" href="#subtract-baseline-from-preprocssed-functional-data" title="Permalink to this headline">¶</a></h3>
+<p>With the baseline model extracted, we now need to subtract it from preprocessed functional data using <code class="docutils literal notranslate"><span class="pre">3dcalc</span></code></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>3dcalc -a $proj_path&quot;/dataset/preproc/MAX&quot;$subj&quot;/func2/ICA_AROMA/MAX&quot;$subj&quot;_EP_Main_TR_MNI_2mm_SI_denoised.nii.gz&quot; \
+-b ./&quot;MAX&quot;$subj_EP_Main_TR_MNI_2mm_I_denoised_baselineModel.nii.gz -prefix &quot;$output&quot;/MAX&quot;$subj&quot;_EP_Main_TR_MNI_2mm_I_denoised_NoBaseline.nii.gz \
+-expr &#39;a-b&#39; \
+-overwrite \
+</pre></div>
+</div>
+</div>
+<div class="section" id="extract-time-series-from-seed-region">
+<h3>3. Extract time series from seed region<a class="headerlink" href="#extract-time-series-from-seed-region" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>3dROIstats -quiet -overwrite
+-mask /data/bswift-1/kmorrow/02-ROI_masks/SUIT_cerebellum_2mm/SUIT_l-CrusII_YeoNetwork6_intersect_gm_2mm.nii.gz \ $output&quot;MAX&quot;$subj&quot;_EP_Main_TR_MNI_2mm_I_denoised_NoBaseline.nii.gz&quot; &gt; \
+$output&quot;MAX&quot;$subj&quot;_l-CrusII_seed_NoBaseline_avg.1D&quot;
+</pre></div>
+</div>
+<fig>
+  <img src="/assets/images/gPPI-seedTimeseries-example.png" width="400" height="300" />
+  <figcaption>Example of extracted time series for left Crus II ROI from MAX101</figcaption>
+</fig>
+</div>
+<div class="section" id="create-boxcar-functions-and-upsample-each-regressor">
+<h3>4. Create boxcar functions and upsample each regressor<a class="headerlink" href="#create-boxcar-functions-and-upsample-each-regressor" title="Permalink to this headline">¶</a></h3>
+<p>For the sake of this simple analysis, I’ve used a simple but <em>full</em> model. This means that variance is accounted for from all events in the paradigm, but are simple blocks.</p>
+<p>Codes are as follows:<br>
+<code class="docutils literal notranslate"><span class="pre">RNT</span></code> - neutral threat block shocks <br>
+<code class="docutils literal notranslate"><span class="pre">RNS</span></code> - neutral block with touch<br>
+<code class="docutils literal notranslate"><span class="pre">RPT</span></code> - positive threat blocks with shocks <br>
+<code class="docutils literal notranslate"><span class="pre">RPS</span></code> - positive safe blocks with touch <br>
+<code class="docutils literal notranslate"><span class="pre">FNT</span></code> - neutral threat blocks without touch <br>
+<code class="docutils literal notranslate"><span class="pre">FNS</span></code> - neutral safe without shock <br>
+<code class="docutils literal notranslate"><span class="pre">FPT</span></code> - positive threat without shock <br>
+<code class="docutils literal notranslate"><span class="pre">FPS</span></code> - positive safe without touch <br></p>
+<p>Anxiety ratings after each block: <br>
+<code class="docutils literal notranslate"><span class="pre">RNT_rate</span></code>
+<code class="docutils literal notranslate"><span class="pre">RNS_rate</span></code>
+<code class="docutils literal notranslate"><span class="pre">RPT_rate</span></code>
+<code class="docutils literal notranslate"><span class="pre">RPS_rate</span></code>
+<code class="docutils literal notranslate"><span class="pre">FNT_rate</span></code>
+<code class="docutils literal notranslate"><span class="pre">FNS_rate</span></code>
+<code class="docutils literal notranslate"><span class="pre">FPT_rate</span></code>
+<code class="docutils literal notranslate"><span class="pre">RPS_rate</span></code></p>
+<p>We will downsample TRs from 1.25s to 0.05s (upsample rate of 25)</p>
+<p><code class="docutils literal notranslate"><span class="pre">stim_dur</span></code> is <code class="docutils literal notranslate"><span class="pre">16.25</span></code> which is the length of a block (response ratings are 2s and computed in a second script)</p>
+<p><code class="docutils literal notranslate"><span class="pre">run_len</span></code> is <code class="docutils literal notranslate"><span class="pre">425</span></code>, which is the number of volumes per run times the original TR <code class="docutils literal notranslate"><span class="pre">340</span> <span class="pre">*</span> <span class="pre">1.25</span></code></p>
+<p><em>Reminder that these scripts are generally in a loop which can be seen in full in <code class="docutils literal notranslate"><span class="pre">/scripts</span></code> directory</em></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>timing_tool.py
+-timing $proj_path/stim_times/&quot;$regressors[$regressor_index]&quot;.txt \
+-timing_to_1D /data/bswift-1/kmorrow/03-gPPI_testing/dataset/regressors/MAX&quot;$i_subj&quot;/gPPI/&quot;$regressors[$regressor_index]_upsample.txt&quot; \
+ -tr 0.05 \
+ -stim_dur 16.25 \
+ -min_frac 0.3 -run_len 425 425 425 425 425 425
+</pre></div>
+</div>
+<fig>
+  <img src="/assets/images/gPPI-upsampledReg-example.png" width="400" height="300" />
+  <figcaption>Example of regressor upsampled to 0.05 TR. False neutral threat (FNT)</figcaption>
+</fig>
+</div>
+<div class="section" id="get-seed-region-data-per-run">
+<h3>5. Get seed region data per run<a class="headerlink" href="#get-seed-region-data-per-run" title="Permalink to this headline">¶</a></h3>
+<p>Shell script loops through each run based on start and ending index.</p>
+<p><code class="docutils literal notranslate"><span class="pre">start_index1</span> <span class="pre">=</span> <span class="pre">run</span> <span class="pre">index</span> <span class="pre">*</span> <span class="pre">340</span></code>
+<code class="docutils literal notranslate"><span class="pre">end_index1</span> <span class="pre">=</span> <span class="pre">(run</span> <span class="pre">index</span> <span class="pre">*</span> <span class="pre">340)</span> <span class="pre">+</span> <span class="pre">(340</span> <span class="pre">-</span> <span class="pre">1)</span> </code></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1dcat /data/bswift-1/kmorrow/03-gPPI_testing/output/&quot;MAX&quot;$i_subj&quot;_l-CrusII_seed_NoBaseline_avg.1D&#39;($start_index1..$end_index1}[0]&#39;&quot; &gt; &quot;$seed_names[$seed_index]&quot;_Seed_perRun.1D
+</pre></div>
+</div>
+</div>
+<div class="section" id="upsample-seed-data">
+<h3>6. Upsample seed data<a class="headerlink" href="#upsample-seed-data" title="Permalink to this headline">¶</a></h3>
+<p>Upsample to the same rate as the regressors in step #4 (0.05)</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1dUpsample &quot;$UpSampRate&quot; &quot;$seed_names[$seed_index]&quot;_Seed_perRun.1D &gt; &quot;$seed_names[$seed_index]&quot;_Seed_perRun_upsample.1D
+</pre></div>
+</div>
+<fig>
+  <img src="/assets/images/gPPI-seedPerRunUpsample-example.png" width="400" height="300" />
+<figcaption>Seed data upsampled to 0.05s TR</figcaption>
+</fig>
+</div>
+<div class="section" id="a-create-gamma-function">
+<h3>7a. Create gamma function<a class="headerlink" href="#a-create-gamma-function" title="Permalink to this headline">¶</a></h3>
+<p>Resembles the hemodynamic response function at the new upsampled TR (0.05s)</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Waver -dt 0.05 -peak 1 -GAM -inline 1@1 &gt; GammaHR_TR05.1D
+</pre></div>
+</div>
+<fig>
+  <img src="/assets/images/gPPI-gammaFunction.png" width="400" height="300" />
+  <figcaption>Gamma function to deconvolve seed timeseries</figcaption>
+</fig>
+</div>
+<div class="section" id="b-deconvolve-seed-time-seed-timeseries-with-gamma-function">
+<h3>7b. Deconvolve seed time seed timeseries with gamma function<a class="headerlink" href="#b-deconvolve-seed-time-seed-timeseries-with-gamma-function" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>3dTfitter
+-RHS &quot;$seed_names[$seed_index]&quot;_Seed_perRun_upsample.1D \
+-FALTUNG /data/bswift-1/kmorrow/03-gPPI_testing/GammaHR_TR05.1D \ &quot;$seed_names[$seed_index]&quot;_Seed_Neur_perRun_upsample.1D 012 -2
+
+1dtranspose &quot;$seed_names[$seed_index]&quot;_Seed_Neur_perRun_upsample.1D &gt; &quot;$seed_names[$seed_index]&quot;_Seed_Neur_perRun_upsampleT.1D
+</pre></div>
+</div>
+</div>
+<div class="section" id="an-aside-does-mean-centering-simple-effects-before-creating-interaction-term-impact-collinearity">
+<h3>An aside: Does mean-centering simple effects before creating interaction term impact collinearity?<a class="headerlink" href="#an-aside-does-mean-centering-simple-effects-before-creating-interaction-term-impact-collinearity" title="Permalink to this headline">¶</a></h3>
+<p>There are mixed opinions on whether mean centering helps reduce collinearity between the interaction term and simple effects. To test this, I’ve created two sets of interaction terms, one set is mean center and the other not. I will calculate variance inflation factors between A, B, and A*B for each set and compare.</p>
+<p>VIFs - mean-centered</p>
+<p>VIFs - not mean-centered</p>
+</div>
+<div class="section" id="de-mean-neuronal-timeseries">
+<h3>8. De-mean neuronal timeseries<a class="headerlink" href="#de-mean-neuronal-timeseries" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1d_tool.py -infile &quot;$seed_names[$seed_index]&quot;_Seed_Neur_perRun_upsampleT.1D
+-demean -write \ &quot;$seed_names[$seed_index]&quot;_Seed_Neur_perRun_upsampleT_demean.1D
+</pre></div>
+</div>
+  <img src="/assets/images/gPPI-seedTimeseriesUpsampled_demeaned.png" width="400" height="300" />
+</div>
+<div class="section" id="create-interaction-terms-for-each-condition">
+<h3>9. Create interaction terms for each condition<a class="headerlink" href="#create-interaction-terms-for-each-condition" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1dcat $out_path/dataset/regressors/MAX&quot;$i_subj&quot;/gPPI/&quot;&quot;$regressors[$regressor_index]&quot;_upsample.txt&#39;{$start_index2..$end_index2}&#39;&quot; &gt; tmp.1D
+
+1d_tool.py -infile tmp.1D -demean -write tmp_demean.1D
+
+1deval -a &quot;$seed_names[$seed_index]&quot;_Seed_Neur_perRun_upsampleT_demean.1D \
+-b tmp_demean.1D \
+-expr &#39;a*b’ &gt; &quot;$seed_names[$seed_index]&quot;_Seed_&quot;$regressors[$regressor_index]&quot;_Neur_perRun_upsampleT.1D
+</pre></div>
+</div>
+</div>
+<div class="section" id="convolve-newly-created-terms-with-canonical-hrf">
+<h3>10. Convolve newly created terms with canonical HRF<a class="headerlink" href="#convolve-newly-created-terms-with-canonical-hrf" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>waver -GAM \
+-peak 1 \
+-TR $sub_TR \
+-input &quot;$seed_names[$seed_index]&quot;_Seed_&quot;$regressors[$regressor_index]&quot;_Neur_perRun_upsampleT.1D -numout $noOfVol_perRun_upsample &gt;  &quot;$seed_names[$seed_index]&quot;_Seed_&quot;$regressors[$regressor_index]&quot;_Conv_perRun_upsampleT.1D
+</pre></div>
+</div>
+</div>
+<div class="section" id="downsample-to-original-tr-1-25s">
+<h3>11. Downsample to original TR (1.25s)<a class="headerlink" href="#downsample-to-original-tr-1-25s" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1dcat &quot;$seed_names[$seed_index]&quot;_Seed_&quot;$regressors[$regressor_index]&quot;_Conv_perRun_upsampleT.1D&#39;{0..$(25)}&#39; &gt;&gt; &quot;$seed_names[$seed_index]&quot;_Seed_&quot;$regressors[$regressor_index]&quot;_Conv_allRuns.1D``
+</pre></div>
+</div>
+<fig>
+  <img src="/assets/images/gPPI-interactionTerm_FNT-example.png" width="400" height="300" />
+<figcaption>Example of interaction term for False neutral threat (FNT) condition</figcaption>
+</fig>
+</div>
+<div class="section" id="these-should-obviously-be-de-spiked-or-censored-in-some-way">
+<h3>These should obviously be de-spiked or censored in some way.<a class="headerlink" href="#these-should-obviously-be-de-spiked-or-censored-in-some-way" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="landing-page.html" title="previous page">First year project</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>
