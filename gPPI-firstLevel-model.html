@@ -1,0 +1,494 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>gPPI basic first level model &#8212; First year project</title>
+    
+  <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Creating gPPI regressors" href="create-gPPI-regressors.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">First year project</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="landing-page.html">
+   First year project
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="create-gPPI-regressors.html">
+   Creating gPPI regressors
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   gPPI basic first level model
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/gPPI-firstLevel-model.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualizing-the-model">
+   Visualizing the model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#contrasts">
+   Contrasts
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#script">
+   Script
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="gppi-basic-first-level-model">
+<h1>gPPI basic first level model<a class="headerlink" href="#gppi-basic-first-level-model" title="Permalink to this headline">¶</a></h1>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Regressor</p></th>
+<th class="text-align:left head"><p>File name</p></th>
+<th class="text-align:left head"><p>Label</p></th>
+<th class="text-align:left head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>left CrusII seed timeseries</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">MAX&quot;$subj&quot;_l-CrusII_seed_NoBaseline_avg.1D</span></code></p></td>
+<td class="text-align:left"><p>seed</p></td>
+<td class="text-align:left"><p>Extracted seed time series that was used to created gPPI interaction terms</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>FNS*seed</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">l-CrusII_Seed_FNS_Conv_allRuns.1D</span></code></p></td>
+<td class="text-align:left"><p>falseNeuSafe-seed</p></td>
+<td class="text-align:left"><p>Interaction between False Neutral Safe blocks and seed time series</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>FNS</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">FNS.txt</span></code></p></td>
+<td class="text-align:left"><p>falseNeuSafe</p></td>
+<td class="text-align:left"><p>False (no shock) Neutral Safe block</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>FNT*seed</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">l-CrusII_Seed_FNS_Conv_allRuns.1D</span></code></p></td>
+<td class="text-align:left"><p>falseNeuThreat-seed</p></td>
+<td class="text-align:left"><p>Interaction between False Neutral Threat blocks and seed time series</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>FNT</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">FNT.txt</span></code></p></td>
+<td class="text-align:left"><p>falseNeuThreat</p></td>
+<td class="text-align:left"><p>False (no shock) Neutral Threat block</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>FPS*seed</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">l-CrusII_Seed_FPS_Conv_allRuns.1D</span></code></p></td>
+<td class="text-align:left"><p>falsePosSafe-seed</p></td>
+<td class="text-align:left"><p>Interaction between False Positive Safe blocks and seed time series</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>FNT</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">FNT.txt</span></code></p></td>
+<td class="text-align:left"><p>falseNeuThreat</p></td>
+<td class="text-align:left"><p>False (no shock)Threat Safe block</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>FPT*seed</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">l-CrusII_Seed_FPT_Conv_allRuns.1D</span></code></p></td>
+<td class="text-align:left"><p>falsePosThreat</p></td>
+<td class="text-align:left"><p>Interaction between False Positive Threat blocks and seed time series</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>FPT</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">FPT.txt</span></code></p></td>
+<td class="text-align:left"><p>falsePosThreat</p></td>
+<td class="text-align:left"><p>False (no shock) Positive Safe block</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>r_FNS</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">rate_FNS.txt</span></code></p></td>
+<td class="text-align:left"><p>respond-falseNeuSafe</p></td>
+<td class="text-align:left"><p>Anxiety rating post FNS block</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>r_FNS*seed</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">l-CrusII_Seed_r_FNS_Conv_allRuns.1D</span></code></p></td>
+<td class="text-align:left"><p>respond-falseNeuSafe-seed</p></td>
+<td class="text-align:left"><p>Interaction of FNS rating and seed</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>r_FNT</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">rate_FNT.txt</span></code></p></td>
+<td class="text-align:left"><p>respond-falseNeuThreat</p></td>
+<td class="text-align:left"><p>Anxiety rating post FNT block</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>r_FNT*seed</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">l-CrusII_Seed_r_FNT_Conv_allRuns.1D</span></code></p></td>
+<td class="text-align:left"><p>respond-falseNeuThreat-seed</p></td>
+<td class="text-align:left"><p>Interaction of rating and seed</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>r_FPS</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">rate_FPS.txt</span></code></p></td>
+<td class="text-align:left"><p>respond-falsePosSafe</p></td>
+<td class="text-align:left"><p>Anxiety rating post FPS block</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>r_FPS*seed</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">l-CrusII_Seed_r_FPS_Conv_allRuns.1D</span></code></p></td>
+<td class="text-align:left"><p>respond-falsePosSafe-seed</p></td>
+<td class="text-align:left"><p>Interaction of rating and seed</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>r_FPT</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">rate_FPT.txt</span></code></p></td>
+<td class="text-align:left"><p>respond-falsePosThreat</p></td>
+<td class="text-align:left"><p>Anxiety rating post FPT</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>r_FPT*seed</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">l-CrusII_Seed_r_FPT_Conv_allRuns.1D</span></code></p></td>
+<td class="text-align:left"><p>respond-falsePosThreat-seed</p></td>
+<td class="text-align:left"><p>Interaction of rating and seed</p></td>
+</tr>
+</tbody>
+</table>
+<img src = "/assets/images/MAX_basicModel_formula.png" width="1000" height = "150" />
+<div class="section" id="visualizing-the-model">
+<h2>Visualizing the model<a class="headerlink" href="#visualizing-the-model" title="Permalink to this headline">¶</a></h2>
+<p>An example from one subject</p>
+<img src="/assets/images/MAX_basicModel_gPPI.png" width="600" height="600" />
+<img src="/assets/images/MAX_basicModel_motionParams.png" width="600" height="600" />
+</div>
+<div class="section" id="contrasts">
+<h2>Contrasts<a class="headerlink" href="#contrasts" title="Permalink to this headline">¶</a></h2>
+<p>Comparing gPPI interaction regressors from different block types to see how relationship between seed region and all other voxels compares by block type.</p>
+<p><code class="docutils literal notranslate"><span class="pre">False</span> <span class="pre">Neutral</span> <span class="pre">Threat</span></code> -<code class="docutils literal notranslate"><span class="pre">False</span> <span class="pre">Neutral</span> <span class="pre">Safe</span></code> <br>
+<em>Threat versus Safe conditions for Neutral mood runs</em></p>
+<p><code class="docutils literal notranslate"><span class="pre">False</span> <span class="pre">Positive</span> <span class="pre">Threat</span></code> -<code class="docutils literal notranslate"><span class="pre">False</span> <span class="pre">Positive</span> <span class="pre">Safe</span></code>  <br>
+<em>Threat versus Safe conditions for Positive mood runs</em></p>
+<p><code class="docutils literal notranslate"><span class="pre">False</span> <span class="pre">Neutral</span> <span class="pre">Threat</span></code> <code class="docutils literal notranslate"><span class="pre">False</span> <span class="pre">Positive</span> <span class="pre">Threat</span></code> - <code class="docutils literal notranslate"><span class="pre">False</span> <span class="pre">Neutral</span> <span class="pre">Safe</span></code> - <code class="docutils literal notranslate"><span class="pre">False</span> <span class="pre">Positive</span> <span class="pre">Safe</span></code> <br>
+<em>Overall Threat versus Safe</em></p>
+<p><code class="docutils literal notranslate"><span class="pre">False</span> <span class="pre">Positive</span> <span class="pre">Threat</span> <span class="pre">+</span> <span class="pre">False</span> <span class="pre">Positive</span> <span class="pre">Safe</span> <span class="pre">-False</span> <span class="pre">Neutral</span> <span class="pre">Threat</span> <span class="pre">-False</span> <span class="pre">Neutral</span> <span class="pre">Safe</span></code> <br>
+<em>Are there any differences between positive and neutral runs?</em></p>
+</div>
+<div class="section" id="script">
+<h2>Script<a class="headerlink" href="#script" title="Permalink to this headline">¶</a></h2>
+<p>Shell script that performs first level analysis using <code class="docutils literal notranslate"><span class="pre">3dDeconvolve</span></code> <br>
+Can also be found under <code class="docutils literal notranslate"><span class="pre">/scripts</span></code> directory</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#!/bin/csh
+#SBATCH -t 30:30:30
+#SBATCH -n 1
+#SBATCH --array=101,102,103,104,106
+#SBATCH --mem=MaxMemPerNode
+#SBATCH -J MAX_gPPI_firstLevel
+#SBATCH -o .slurm/MAX_fMRI_Analysis_block_MR_gPPI_%a.out
+
+#set subj = $1
+set subj = 2`printf &quot;%02d&quot; $SLURM_ARRAY_TASK_ID`
+
+echo Analyzing Subject: MAX$subj
+
+
+# Script to run individual GLM analysis using AFNI&#39;s 3dDeconvovle
+#  - note: takes a few minutes per subject
+
+set proj_path = /data/bswift-1/Pessoa_Lab/MAX
+set gPPI_path = /data/bswift-1/kmorrow/03-gPPI_testing
+set bad_runs = (`cat runs_to_exclude_Main.txt | grep MAX${subj} | awk &#39;{ print $2 }&#39;`)
+set num_bad_runs = $#bad_runs
+
+
+echo &quot;MAX&quot;$subj&quot; has &quot;$num_bad_runs&quot;. Therefore...&quot;
+@ nruns = 6 - &quot;$num_bad_runs&quot;
+@ nvolume = 336
+
+if (&quot;$nruns&quot; &lt; 6) then
+  set input = $proj_path/dataset/preproc/MAX&quot;$subj&quot;/func2/ICA_AROMA/MAX&quot;$subj&quot;_EP_Main_TR_MNI_2mm_I_denoised_reducedRuns.nii.gz
+  set stim_path = $proj_path/stim_times/MAX&quot;$subj&quot;
+
+  set fileCensMotion = $proj_path/dataset/preproc/MAX&quot;$subj&quot;/func2/MAX&quot;$subj&quot;_MotionCensor_1.0_Main_reducedRuns.txt # if only &quot;high&quot; motion volumes are to be censored
+  set fileRawMotion = $proj_path/dataset/preproc/MAX&quot;$subj&quot;/func2/MAX&quot;$subj&quot;_MotionPar_Main_reducedRuns.txt
+  set fileDerMotion = $proj_path/dataset/preproc/MAX&quot;$subj&quot;/func2/MAX&quot;$subj&quot;_MotionParDeriv_Main_reducedRuns.txt
+else
+  set input = $proj_path/dataset/preproc/MAX&quot;$subj&quot;/func2/ICA_AROMA/MAX&quot;$subj&quot;_EP_Main_TR_MNI_2mm_I_denoised.nii.gz
+  set stim_path = $proj_path/stim_times
+
+  set fileCensMotion = $proj_path/dataset/preproc/MAX&quot;$subj&quot;/func2/MAX&quot;$subj&quot;_MotionCensor_1.0_Main.txt # if only &quot;high&quot; motion volumes are to be censored
+  set fileRawMotion = $proj_path/dataset/preproc/MAX&quot;$subj&quot;/func2/MAX&quot;$subj&quot;_MotionPar_Main.txt
+  set fileDerMotion = $proj_path/dataset/preproc/MAX&quot;$subj&quot;/func2/MAX&quot;$subj&quot;_MotionParDeriv_Main.txt
+endif
+
+echo &quot;MAX&quot;$subj&quot; has &quot;$nruns&quot; runs, so input func data is as follows:&quot;
+echo &quot;$input&quot;
+echo &quot;&quot;
+echo &quot;And, stim times path is as follows: &quot;
+echo &quot;$stim_path&quot;
+
+echo &quot;&quot;
+echo &quot;Creating censor file that censors high motion and shock-contaminated volumes&quot;
+set fileShock16s = $stim_path/Censorfile.1D # if only shock-contaminated volumes are to be censored
+set fileCensMotionAndShock = $proj_path/dataset/preproc/MAX&quot;$subj&quot;/func2/MAX&quot;$subj&quot;_MotionAndShockCensor_1.0.txt #if both &quot;high&quot; motion and shock-contaminated volumes are to be censored
+rm -f &quot;$fileCensMotionAndShock&quot;
+1deval -overwrite -a &quot;$fileShock16s&quot; -b &quot;$fileCensMotion&quot; -expr &#39;a*b&#39; &gt; $fileCensMotionAndShock
+
+set out = $gPPI_path/dataset/first_level/MAX&quot;$subj&quot;/gPPI
+mkdir -p &quot;$out&quot;
+echo &quot;The output path is &quot;$out&quot;&quot;
+
+cd $proj_path/dataset/preproc/MAX&quot;$subj&quot;/func2
+
+echo &#39;\n&#39; &quot;Creating $proj_path/dataset/preproc/MAX&quot;$subj&quot;/func2/runConcatInfo.1D&quot;
+set concatList = &quot;&quot;
+set i = 0
+set idx = 0
+
+while ( $i &lt; $nruns )
+  @ idx = $i * $nvolume
+  set concatList = &quot;$concatList&quot;&quot; &quot;&quot;$idx&quot;
+  @ i += 1
+end
+
+rm -f $proj_path/dataset/preproc/MAX&quot;$subj&quot;/func2/runConcatInfo.1D
+echo $concatList &gt; $proj_path/dataset/preproc/MAX&quot;$subj&quot;/func2/runConcatInfo.1D
+echo &quot;concat file: &quot;$concatList&quot;&quot;
+
+echo &#39;\n&#39; &quot;Subject MAX&quot;$subj&quot; ... running multiple regression using 3dDeconvolve:&quot;
+</pre></div>
+</div>
+<p>3dDeconvolve -x1D_stop -overwrite -input “<span class="math notranslate nohighlight">\(input&quot; \
+        -mask /data/bswift-1/Pessoa_Lab/share/templates/MNI152_T1_2mm_brain_GM_02182017.nii.gz \
+    		-polort A \
+    		-local_times \
+    		-concat \)</span>proj_path/dataset/preproc/MAX”<span class="math notranslate nohighlight">\(subj&quot;/func2/runConcatInfo.1D \
+    		-noFDR \
+    		-num_stimts 17 \
+    		-censor &quot;\)</span>fileCensMotionAndShock” <br />
+-stim_times 1 “<span class="math notranslate nohighlight">\(stim_path&quot;/FNS.txt 'BLOCK(16.25,1)' -stim_label 1 FNS \
+     		-stim_times 2 &quot;\)</span>stim_path”/FNT.txt ‘BLOCK(16.25,1)’ -stim_label 2 FNT <br />
+-stim_times 3 “<span class="math notranslate nohighlight">\(stim_path&quot;/FPS.txt 'BLOCK(16.25,1)' -stim_label 3 FPS \
+    		-stim_times 4 &quot;\)</span>stim_path”/FPT.txt ‘BLOCK(16.25,1)’ -stim_label 4 FPT <br />
+-stim_times 5 “<span class="math notranslate nohighlight">\(stim_path&quot;/rate_FNS.txt 'BLOCK(2,1)' -stim_label 5 r_FNS \
+     		-stim_times 6 &quot;\)</span>stim_path”/rate_FNT.txt ‘BLOCK(2,1)’ -stim_label 6 r_FNT <br />
+-stim_times 7 “<span class="math notranslate nohighlight">\(stim_path&quot;/rate_FPS.txt 'BLOCK(2,1)' -stim_label 7 r_FPS \
+    		-stim_times 8 &quot;\)</span>stim_path”/rate_FPT.txt ‘BLOCK(2,1)’ -stim_label 8 r_FPT <br />
+-stim_file 9 “<span class="math notranslate nohighlight">\(gPPI_path&quot;/output/MAX&quot;\)</span>subj”_l-CrusII_seed_NoBaseline_avg.1D -stim_label 9 l-CrusII_seed <br />
+-stim_file 10 “<span class="math notranslate nohighlight">\(gPPI_path&quot;/dataset/regressors/MAX&quot;\)</span>subj”/gPPI/l-CrusII_Seed_FNS_Conv_allRuns.1D -stim_label 10 gPPI_FNS <br />
+-stim_file 11 “<span class="math notranslate nohighlight">\(gPPI_path&quot;/dataset/regressors/MAX&quot;\)</span>subj”/gPPI/l-CrusII_Seed_FNT_Conv_allRuns.1D -stim_label 11 gPPI_FNT <br />
+-stim_file 12 “<span class="math notranslate nohighlight">\(gPPI_path&quot;/dataset/regressors/MAX&quot;\)</span>subj”/gPPI/l-CrusII_Seed_FPS_Conv_allRuns.1D -stim_label 12 gPPI_FPS <br />
+-stim_file 13 “<span class="math notranslate nohighlight">\(gPPI_path&quot;/dataset/regressors/MAX&quot;\)</span>subj”/gPPI/l-CrusII_Seed_FPT_Conv_allRuns.1D -stim_label 13 gPPI_FPT <br />
+-stim_file 14 “<span class="math notranslate nohighlight">\(gPPI_path&quot;/dataset/regressors/MAX&quot;\)</span>subj”/gPPI/rate/l-CrusII_Seed_rate_FNS_Conv_allRuns.1D -stim_label 14 gPPI_rate_FNS <br />
+-stim_file 15 “<span class="math notranslate nohighlight">\(gPPI_path&quot;/dataset/regressors/MAX&quot;\)</span>subj”/gPPI/rate/l-CrusII_Seed_rate_FNT_Conv_allRuns.1D -stim_label 15 gPPI_rate_FNT <br />
+-stim_file 16 “<span class="math notranslate nohighlight">\(gPPI_path&quot;/dataset/regressors/MAX&quot;\)</span>subj”/gPPI/rate/l-CrusII_Seed_rate_FPS_Conv_allRuns.1D -stim_label 16 gPPI_rate_FPS <br />
+-stim_file 17 “<span class="math notranslate nohighlight">\(gPPI_path&quot;/dataset/regressors/MAX&quot;\)</span>subj”/gPPI/rate/l-CrusII_Seed_rate_FPT_Conv_allRuns.1D -stim_label 17 gPPI_rate_FPT <br />
+-ortvec “<span class="math notranslate nohighlight">\(fileRawMotion&quot;'[1..6]' 'MotionParam' \
+        		-ortvec &quot;\)</span>fileDerMotion”’[0..5]’ ‘MotionParamDerv’ <br />
+-cbucket ./”MAX”<span class="math notranslate nohighlight">\(subj&quot;_Main_block_MR_I_l-CrusII_gPPI.nii.gz&quot; \
+    		-xsave \
+    		-num_glt 4 \
+        		-gltsym &quot;SYM: gPPI_FNT -gPPI_FNS&quot; -glt_label 1 gPPI_FNTvsFNS \
+        		-gltsym &quot;SYM: gPPI_FPT -gPPI_FPS&quot; -glt_label 2 gPPI_FPTvsFPS \
+        		-gltsym &quot;SYM: gPPI_FNT gPPI_FPT -gPPI_FNS -gPPI_FPS&quot; -glt_label 3 gPPI_threat_vs_safe \
+       		-gltsym &quot;SYM: gPPI_FNT gPPI_FNS -gPPI_FPT -gPPI_FPS&quot; -glt_label 4 gPPI_neutral_vs_pos \
+    		-x1D &quot;\)</span>out”/”MAX”<span class="math notranslate nohighlight">\(subj&quot;_Main_block_MR_I_gPPI_demean.x1D&quot; \
+    		-x1D_uncensored &quot;\)</span>out”/”MAX”$subj”_Main_block_MR_uncensored_I_l-CrusII_gPPI_demean.x1D”</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="create-gPPI-regressors.html" title="previous page">Creating gPPI regressors</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>
