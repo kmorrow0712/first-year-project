@@ -6,9 +6,5 @@ Below will be brief updates of what has been added by date.
 This page is continuously under construction!
 ```
 
-### December 14, 2020
-Initiated this page. 
-
-
-
-That's it!
+##### December 14, 2020
+Initiated this page and added older pages overviewing gPPI regressor creation and details of the basic first level model. 
