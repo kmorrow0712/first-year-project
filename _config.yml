@@ -1,5 +1,4 @@
 # basic information
 title: "First year project"
 logo: images/logo.png
-execute:
-	execute_notebook: "off"
+
