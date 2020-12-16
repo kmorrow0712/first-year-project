@@ -2,5 +2,6 @@
 
 - file: create-gPPI-regressors
 - file: gPPI-firstLevel-model
+- file: visualizeModel_basic
 
 
