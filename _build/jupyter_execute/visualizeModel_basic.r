@@ -2,9 +2,11 @@
 library(dplyr)
 library(ggplot2)
 library(tidyr)
+library(repr)
 
 # import data
-df <- read.table('../data_examples/MAX101_Main_block_MR_I_gPPI_demean.x1D')
+df <- read.table('data_examples/MAX101_Main_block_MR_I_gPPI_demean.x1D')
+
 
 # subset dataframe to only include model regressors & label
 
@@ -48,25 +50,50 @@ df.model$key <- factor(df.model$key, levels = c("seed",
                                                "respond-falsePosThreat",
                                               "respond-falsePosThreat-seed",
                                                "respond-falsePosSafe",
-                                            "respond-falsePosSafe-seed",
+                                               "respond-falsePosSafe-seed",
                                                "respond-falseNeuThreat",
                                                 "respond-falseNeuThreat-seed",
                                                "respond-falseNeuSafe",
                                                "respond-falseNeuSafe-seed"))
 
-ggplot(df.model, aes(x = TR, y = value)) + 
+options(repr.plot.width = 15, repr.plot.height = 15)
+
+plot <- ggplot(df.model, aes(x = TR, y = value)) + 
   geom_line(aes(color = index), size = 1) +
   facet_grid(rows = vars(key), scales = "free") +
   scale_x_continuous(breaks = c(0, 340, 680, 1020, 1360, 1700, 2040)) +
   scale_y_continuous() +
   theme_minimal() +
-  labs(y = NULL, title = "Regressors") +
+  labs(y = NULL) +
   theme(
         legend.position = 'none',
-        strip.text.y = element_text(angle = 0, hjust = 0),
-        axis.text.y = element_text(size = 5))
+        strip.text.y = element_text(angle = 0, hjust = 0, size = 15),
+        axis.text = element_text(size = 12)) 
 
-ggsave('../assets/images/MAX_basicModel_gPPI.png')
+plot + ggtitle(sprintf(
+    "gPPI model example subject", 
+    getOption("repr.plot.width"),
+    getOption("repr.plot.height")
+))
+
+
+options(repr.plot.width = 15, repr.plot.height = 15)
+plot <- df.model %>% filter(TR < 500) %>%
+ggplot(aes(x = TR, y = value)) +
+geom_line(aes(color = index), size = 1) +
+facet_grid(rows = vars(key), scales = "free") +
+  theme_minimal() +
+  labs(y = NULL, title = "Regressors - first 500 TRs") +
+  theme(
+        plot.title = element_text(size = 30),
+        legend.position = 'none',
+        strip.text.y = element_text(angle = 0, hjust = 0, size = 15),
+        axis.text = element_text(size = 15))
+plot + ggtitle(sprintf(
+    "gPPI model example subject- first 500 TRs ", 
+    getOption("repr.plot.width"),
+    getOption("repr.plot.height")
+))
 
 df.long %>% filter(index %in% 42:53) %>%
 ggplot(aes(x = TR, y = value)) + 
@@ -80,6 +107,8 @@ ggplot(aes(x = TR, y = value)) +
         legend.position = 'none',
         strip.text.y = element_text(angle = 0, hjust = 0))
 
-ggsave('../assets/images/MAX_basicModel_motionParams.png')
+ggsave('images/MAX_basicModel_motionParams.png')
+
+
 
 
